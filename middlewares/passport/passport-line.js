@@ -12,7 +12,7 @@ const User = require("../../schemas/v1/user.schema");
 passport.use(new LineStrategy({
     channelID: process.env.LINE_CHANNEL_ID,
     channelSecret: process.env.LINE_CHANNEL_SECRET,
-    callbackURL: "http://localhost:3111/api/v1/auth/line/callback",
+    callbackURL: "https://gemtechtest.onrender.com",
     session: false,
     scope: ['profile', 'openid', 'email'],
     botPrompt: 'normal',

@@ -178,7 +178,7 @@ const sendPhoneVerification = async (req, res) => {
 
     await axios
       .post(
-        "https://sms-uat.jaidee.io/api/otp/request",
+        "http://localhost:3111/api/otp/request",
         {
           to: phone,
         },
@@ -255,7 +255,7 @@ const verifyEmail = async (req, res) => {
       await redis.del(email);
 
       //res.status(200).send({ message: 'E-mail has been successfully verified!'});
-      res.redirect("https://www.jaidee-dev.shop/emailverified");
+      res.redirect("http://localhost:3111/emailverified");
     }
   } catch (err) {
     console.error(err);

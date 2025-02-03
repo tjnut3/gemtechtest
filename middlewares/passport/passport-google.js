@@ -13,7 +13,7 @@ const User = require("../../schemas/v1/user.schema");
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3111/api/v1/auth/google/callback",
+    callbackURL: "https://gemtechtest.onrender.com/api/v1/auth/google/callback",
     scope: ['profile'],
 },
     function (accessToken, refreshToken, profile, cb) {

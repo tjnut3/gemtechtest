@@ -76,7 +76,7 @@ app.use(passport.session());
 
 // Cross Origin Resource Sharing
 const whitelist = [
-  "http://localhost:5173",
+  "https://gemtechtest.onrender.com",
 ];
 const corsOptions = {
   origin: (origin, callback) => {
@@ -152,6 +152,14 @@ app.use("/api/v1/fileupload", v1FileUploadRouter);
 //? Post Endpoint
 const v1PostRouter = require("./routes/v1/postRoutes");
 app.use("/api/v1/post", v1PostRouter);
+
+//? Product Endpoint
+const v1ProductRouter = require("./routes/v1/productRoutes");
+app.use("/api/v1/product", v1ProductRouter);
+
+//? Order Endpoint
+const v1OrderRouter = require("./routes/v1/orderRoutes");
+app.use("/api/v1/order", v1OrderRouter);
 
 //? Post Endpoint
 const activityRoutes = require("./routes/v1/activityRoutes");
