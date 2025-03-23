@@ -30,6 +30,7 @@ const loginRateLimiter = rateLimit({
     message: "Too many attempt to login, please try again in 10 minutes"
 });
 
+
 module.exports = {
     registerRateLimiter, loginRateLimiter
 }
