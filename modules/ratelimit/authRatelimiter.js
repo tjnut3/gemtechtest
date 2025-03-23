@@ -17,9 +17,9 @@ const registerRateLimiter = rateLimit({
 });
 
 const loginRateLimiter = rateLimit({
-    keyGenerator: (req, res) => {
+    keyGenerator: (req) => {
         const realIp = req.headers['x-forwarded-for']?.split(',')[0] || req.ip;
-        res.send(`Your Real IP: ${realIp}`);
+        console.log(`Your Real IP: ${realIp}`);
         console.log("Request IP:", req.ip);  
         return req.ip;
     },
@@ -29,6 +29,7 @@ const loginRateLimiter = rateLimit({
     legacyHeaders: false,
     message: "Too many attempt to login, please try again in 10 minutes"
 });
+
 
 module.exports = {
     registerRateLimiter, loginRateLimiter
