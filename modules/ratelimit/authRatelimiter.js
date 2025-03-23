@@ -17,7 +17,7 @@ const registerRateLimiter = rateLimit({
 });
 
 const loginRateLimiter = rateLimit({
-    keyGenerator: (req) => {
+    keyGenerator: (req, res) => {
         const realIp = req.headers['x-forwarded-for']?.split(',')[0] || req.ip;
         res.send(`Your Real IP: ${realIp}`);
         console.log("Request IP:", req.ip);  
