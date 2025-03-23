@@ -18,7 +18,9 @@ const registerRateLimiter = rateLimit({
 
 const loginRateLimiter = rateLimit({
     keyGenerator: (req) => {
-        console.log("Request IP:", req.ip);  // พิมพ์ IP ที่ได้ออกมา
+        const realIp = req.headers['x-forwarded-for']?.split(',')[0] || req.ip;
+        res.send(`Your Real IP: ${realIp}`);
+        console.log("Request IP:", req.ip);  
         return req.ip;
     },
     windowMs: 10 * 60 * 1000, // 10 minutes
