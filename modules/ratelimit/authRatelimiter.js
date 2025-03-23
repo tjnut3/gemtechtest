@@ -18,11 +18,13 @@ const registerRateLimiter = rateLimit({
 
 const loginRateLimiter = rateLimit({
     keyGenerator: (req) => {
-        console.log("Request IP:", req.ip);  // พิมพ์ IP ที่ได้ออกมา
+        const realIp = req.headers['x-forwarded-for']?.split(',')[0] || req.ip;
+        res.send(`Your Real IP: ${realIp}`);
+        console.log("Request IP:", req.ip);  
         return req.ip;
     },
-    windowMs: 5 * 60 * 1000, // 10 minutes
-    max: 20, // limit each IP to 10 requests per window Ms
+    windowMs: 10 * 60 * 1000, // 10 minutes
+    max: 5, // limit each IP to 10 requests per window Ms
     standardHeaders: true,
     legacyHeaders: false,
     message: "Too many attempt to login, please try again in 10 minutes"
