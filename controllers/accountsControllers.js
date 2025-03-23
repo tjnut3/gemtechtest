@@ -178,7 +178,7 @@ const sendPhoneVerification = async (req, res) => {
 
     await axios
       .post(
-        "http://localhost:3111/api/otp/request",
+        "https://gemtechtest.onrender.com/api/otp/request",
         {
           to: phone,
         },
@@ -255,7 +255,7 @@ const verifyEmail = async (req, res) => {
       await redis.del(email);
 
       //res.status(200).send({ message: 'E-mail has been successfully verified!'});
-      res.redirect("http://localhost:3111/emailverified");
+      res.redirect("https://gemtechtest.onrender.com/emailverified");
     }
   } catch (err) {
     console.error(err);
