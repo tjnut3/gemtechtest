@@ -5,6 +5,7 @@ const passport = require("passport");
 const {
   registerRateLimiter,
   loginRateLimiter,
+  logoutRateLimiter,
 } = require("../../modules/ratelimit/authRatelimiter");
 
 const {
@@ -30,7 +31,7 @@ router.post("/register", registerRateLimiter, register);
 router.post("/login", loginRateLimiter, login);
 
 //? Logout
-router.post("/logout", loginRateLimiter, logout);
+router.post("/logout", logoutRateLimiter, logout);
 
 router.post("/refresh", verifyRefreshToken, refresh);
 
